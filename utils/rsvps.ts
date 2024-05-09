@@ -1,7 +1,7 @@
 import 'server-only'
 import { db } from '@/db/db'
-import { desc, eq, inArray } from 'drizzle-orm'
-import { rsvps, events } from '@/db/schema'
+import { and, desc, eq, inArray } from 'drizzle-orm'
+import { rsvps, events, attendees } from '@/db/schema'
 import { delay } from './delay'
 import { memoize } from 'nextjs-better-unstable-cache'
 
@@ -19,22 +19,16 @@ export const getRsvpsForDashboard = memoize(
     const userEventIds = userEvents.map((event) => event.id)
     if (!userEventIds.length) return []
 
-    const recentRsvps = await db.query.rsvps.findMany({
-      where: inArray(rsvps.eventId, userEventIds),
-      orderBy: desc(rsvps.createdAt),
-      limit: 10,
-      columns: {
-        id: true,
-        status: true,
-        createdAt: true,
-      },
-      with: {
-        attendee: true,
-        event: true,
-      },
-    })
+    const data = await db
+      .selectDistinct()
+      .from(attendees)
+      .where(inArray(rsvps.eventId, userEventIds))
+      .leftJoin(rsvps, eq(attendees.id, rsvps.attendeeId))
+      .leftJoin(events, eq(rsvps.eventId, events.id))
+      .orderBy(desc(rsvps.createdAt))
+      .execute()
 
-    return recentRsvps
+    return data
   },
   {
     persist: true,

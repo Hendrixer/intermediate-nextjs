@@ -20,6 +20,8 @@ export const getEventsForDashboard = memoize(
       with: {
         rsvps: true,
       },
+      limit: 5,
+      orderBy: [asc(events.startOn)],
     })
 
     return data ?? []
