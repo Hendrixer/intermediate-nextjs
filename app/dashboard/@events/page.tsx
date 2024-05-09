@@ -1,6 +1,7 @@
 import { getEventsForDashboard } from '@/utils/events'
 import { getCurrentUser } from '@/utils/users'
 import { Chip } from '@nextui-org/react'
+import Link from 'next/link'
 
 const statusColors = {
   draft: 'warning',
@@ -24,7 +25,9 @@ const EventsRsvp = async () => {
               key={event.id}
               className="border-b border-default-100 p-2 flex gap-2"
             >
-              <span>{event.name}</span>
+              <Link href={`/dashboard/events/${event.id}`}>
+                <span>{event.name}</span>
+              </Link>
               <span>
                 <Chip size="sm" color={statusColors[event.status]}>
                   {event.status}
