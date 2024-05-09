@@ -23,6 +23,10 @@ export const users = sqliteTable('users', {
   password: text('password').notNull(),
 })
 
+export const usersRelations = relations(users, ({ many }) => ({
+  events: many(events),
+}))
+
 export const events = sqliteTable(
   'events',
   {
@@ -50,12 +54,24 @@ export const events = sqliteTable(
   })
 )
 
+export const eventsRelations = relations(events, ({ many, one }) => ({
+  rsvps: many(rsvps),
+  createdBy: one(users, {
+    references: [users.id],
+    fields: [events.createdById],
+  }),
+}))
+
 export const attendees = sqliteTable('attendees', {
   id: id(),
   createdAt: createdAt(),
   email: text('email').notNull().unique(),
   name: text('name').notNull(),
 })
+
+export const attendeesRelations = relations(attendees, ({ many }) => ({
+  rsvps: many(rsvps),
+}))
 
 export const rsvps = sqliteTable(
   'rsvps',
@@ -74,3 +90,14 @@ export const rsvps = sqliteTable(
     unq: unique().on(table.attendeeId, table.eventId),
   })
 )
+
+export const rsvpsRelations = relations(rsvps, ({ one }) => ({
+  attendee: one(attendees, {
+    fields: [rsvps.attendeeId],
+    references: [attendees.id],
+  }),
+  event: one(events, {
+    references: [events.id],
+    fields: [rsvps.eventId],
+  }),
+}))

@@ -12,13 +12,11 @@ export const createTokenForUser = (userId: string) => {
   return token
 }
 
-export const getUserFromToken = async (header?: string) => {
-  if (!header) {
-    return null
-  }
-
-  const token = (header.split('Bearer')[1] ?? '').trim()
-  const payload = jwt.verify(token, SECRET) as { id: string }
+export const getUserFromToken = async (token: {
+  name: string
+  value: string
+}) => {
+  const payload = jwt.verify(token.value, SECRET) as { id: string }
 
   const user = await db.query.users.findFirst({
     where: eq(users.id, payload.id),
@@ -80,10 +78,10 @@ export const signup = async ({
   return { user, token }
 }
 
-const hashPW = (password: string) => {
+export const hashPW = (password: string) => {
   return bcrypt.hash(password, 10)
 }
 
-const comparePW = (password: string, hashedPW: string) => {
+export const comparePW = (password: string, hashedPW: string) => {
   return bcrypt.compare(password, hashedPW)
 }

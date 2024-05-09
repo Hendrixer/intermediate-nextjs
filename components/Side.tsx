@@ -2,7 +2,13 @@
 
 import Link from 'next/link'
 
-const links = [{ route: '/server-actions', name: 'Server Actions' }]
+const links = [
+  { route: '/', name: 'Home' },
+  { route: '/events', name: 'Events' },
+  { route: '/guests', name: 'Guests' },
+  { route: '/activity', name: 'Activity' },
+  { route: '/settings', name: 'Settings' },
+]
 
 const Side = () => {
   return (
