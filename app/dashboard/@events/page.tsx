@@ -1,8 +1,9 @@
 import { getEventsForDashboard } from '@/utils/events'
-import { getRsvpsForDashboard } from '@/utils/rsvps'
+import { getCurrentUser } from '@/utils/users'
 
 const EventsRsvp = async () => {
-  const events = await getEventsForDashboard()
+  const user = await getCurrentUser()
+  const events = await getEventsForDashboard(user.id)
 
   return (
     <div>

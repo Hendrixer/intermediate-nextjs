@@ -4,10 +4,9 @@ import { db } from '@/db/db'
 import { attendees, events, rsvps } from '@/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { delay } from './delay'
+import { unstable_cache } from 'next/cache'
 
-export const getAttendeesCountForDashboard = async () => {
-  const user = await getCurrentUser()
-
+export const getAttendeesCountForDashboard = async (userId: string) => {
   await delay()
   const counts = await db
     .select({
@@ -16,7 +15,7 @@ export const getAttendeesCountForDashboard = async () => {
     .from(events)
     .leftJoin(rsvps, eq(rsvps.eventId, events.id))
     .leftJoin(attendees, eq(attendees.id, rsvps.attendeeId))
-    .where(eq(events.createdById, user.id))
+    .where(eq(events.createdById, userId))
     .groupBy(events.id)
     .execute()
 

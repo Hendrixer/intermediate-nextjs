@@ -5,8 +5,7 @@ import { and, count, eq, ne, not } from 'drizzle-orm'
 import { events, rsvps } from '@/db/schema'
 import { delay } from './delay'
 
-export const getEventsForDashboard = async () => {
-  const user = await getCurrentUser()
+export const getEventsForDashboard = async (userId: string) => {
   await delay()
 
   const data = await db
@@ -19,7 +18,7 @@ export const getEventsForDashboard = async () => {
     })
     .from(events)
     .leftJoin(rsvps, eq(rsvps.eventId, events.id))
-    .where(and(eq(events.createdById, user.id), ne(rsvps.status, 'not-going')))
+    .where(and(eq(events.createdById, userId), ne(rsvps.status, 'not-going')))
     .execute()
 
   return data ?? []

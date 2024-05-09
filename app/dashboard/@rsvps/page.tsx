@@ -1,7 +1,9 @@
 import { getRsvpsForDashboard } from '@/utils/rsvps'
+import { getCurrentUser } from '@/utils/users'
 
 const RsvpsSlot = async () => {
-  const rsvps = await getRsvpsForDashboard()
+  const user = await getCurrentUser()
+  const rsvps = await getRsvpsForDashboard(user.id)
 
   return (
     <div>
