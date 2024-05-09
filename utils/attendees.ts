@@ -8,7 +8,6 @@ import { memoize } from 'nextjs-better-unstable-cache'
 export const getAttendeesCountForDashboard = memoize(
   async (userId: string) => {
     await delay()
-    throw new Error('oops')
 
     const counts = await db
       .select({
