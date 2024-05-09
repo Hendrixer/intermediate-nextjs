@@ -3,9 +3,11 @@ import { getCurrentUser } from './users'
 import { db } from '@/db/db'
 import { and, count, eq, ne, not } from 'drizzle-orm'
 import { events, rsvps } from '@/db/schema'
+import { delay } from './delay'
 
 export const getEventsForDashboard = async () => {
   const user = await getCurrentUser()
+  await delay()
 
   const data = await db
     .select({

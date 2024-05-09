@@ -3,10 +3,12 @@ import { getCurrentUser } from './users'
 import { db } from '@/db/db'
 import { attendees, events, rsvps } from '@/db/schema'
 import { eq, sql } from 'drizzle-orm'
+import { delay } from './delay'
 
 export const getAttendeesCountForDashboard = async () => {
   const user = await getCurrentUser()
 
+  await delay()
   const counts = await db
     .select({
       totalAttendees: sql`count(distinct ${attendees.id})`,
