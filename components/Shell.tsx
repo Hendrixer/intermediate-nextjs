@@ -1,5 +1,5 @@
-import { Input } from '@nextui-org/input'
 import Side from './Side'
+import Nav from './Nav'
 
 const Shell = ({ children }) => {
   return (
@@ -8,11 +8,7 @@ const Shell = ({ children }) => {
         <Side />
       </aside>
       <div className="w-[calc(100vw-200px)] ">
-        <nav className="h-[65px] border-b border-default-50 flex items-center justify-center">
-          <div className="w-1/2">
-            <Input size="sm" variant="faded" placeholder="search" />
-          </div>
-        </nav>
+        <Nav />
         <main className="h-[calc(100vh-65px)]">{children}</main>
       </div>
     </div>

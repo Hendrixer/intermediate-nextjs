@@ -1,5 +1,5 @@
-const UsersPage = () => {
-  return <div>users page</div>
+const ActivityPage = () => {
+  return 'Activity'
 }
 
-export default UsersPage
+export default ActivityPage

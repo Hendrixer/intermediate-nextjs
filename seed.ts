@@ -1,6 +1,5 @@
-import { db } from '@/db/db' // Adjust the import path to where your Drizzle instance is configured
+import { db } from '@/db/db'
 import { events, attendees, rsvps } from '@/db/schema'
-import { hashPW } from './utils/authTools'
 
 const seedDatabase = async () => {
   try {

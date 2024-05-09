@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 
 const Dashboard = ({ children, rsvps, events }) => {
   const path = usePathname()
+
   return (
     <Shell>
       {path === '/dashboard' ? (

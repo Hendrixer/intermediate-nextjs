@@ -9,7 +9,7 @@ const EventsRsvp = async () => {
     <div>
       {events.map((event) => (
         <div key={event.id}>
-          {event.id} {event.rsvps}
+          {event.id} {event.rsvps.length}
         </div>
       ))}
     </div>

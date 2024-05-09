@@ -1,4 +1,4 @@
-export const delay = () => {
-  const randomDelayTime = Math.floor(Math.random() * (3000 - 500 + 1)) + 2000
+export const delay = (max = 2500) => {
+  const randomDelayTime = Math.floor(Math.random() * (max - 500 + 1))
   return new Promise((resolve) => setTimeout(resolve, randomDelayTime))
 }
