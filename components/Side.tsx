@@ -2,10 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import Logo from '@/images/pardy.png'
 import { Button } from '@nextui-org/react'
-import { signout } from '@/actions/signout'
 
 const links = [
   { route: '/dashboard', name: 'Home' },
@@ -15,15 +13,7 @@ const links = [
   { route: '/dashboard/settings', name: 'Settings' },
 ]
 
-const isActive = (path: string, route: string) => {
-  if (route === '/dashboard') {
-    return path === '/dashboard'
-  } else {
-    return path.includes(route)
-  }
-}
 const Side = () => {
-  const path = usePathname()
   const activeClass = 'bg-primary hover:bg-primary'
 
   return (
@@ -38,9 +28,7 @@ const Side = () => {
           <div className="w-full" key={link.route}>
             <Link href={link.route}>
               <div
-                className={`w-full h-full py-2 px-2 hover:bg-content1 rounded-lg ${
-                  isActive(path, link.route) ? activeClass : ''
-                }`}
+                className={`w-full h-full py-2 px-2 hover:bg-content1 rounded-lg `}
               >
                 {link.name}
               </div>
@@ -49,7 +37,7 @@ const Side = () => {
         ))}
       </div>
       <div className="absolute bottom-0 w-full left-0 px-4">
-        <Button onClick={() => signout()} fullWidth variant="ghost">
+        <Button fullWidth variant="ghost">
           Sign Out
         </Button>
       </div>
