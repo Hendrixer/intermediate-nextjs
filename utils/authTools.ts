@@ -46,7 +46,7 @@ export const signin = async ({
   const correctPW = await comparePW(password, match.password)
 
   if (!correctPW) {
-    throw new Error('invalud user')
+    throw new Error('invalid user')
   }
 
   const token = createTokenForUser(match.id)
