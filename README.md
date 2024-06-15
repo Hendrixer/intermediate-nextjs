@@ -1,23 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)](https://frontendmasters.com/courses/intermediate-next-js/)
 
-## Getting Started
+This is a companion repo for the [Intermediate Next.js course](https://frontendmasters.com/courses/intermediate-next-js/) course on [Frontend Masters](https://frontendmasters.com).
 
-First, run the development server:
+## Requirements & Setup Instructions
+
+The setup instructions can be found in the [course notes](https://clumsy-humor-894.notion.site/0-Intro-d0196d3511c34cd69b8690efb51d84b0). You'll need:
+
+- Node version 20
+- [Turso account](https://turso.tech/)
+
+Fork/Clone the repository and checkout the `step/0` branch:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Hendrixer/intermediate-nextjs.git
+cd intermediate-nextjs
+git checkout step/0
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Turso Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+See the [course notes](https://clumsy-humor-894.notion.site/0-Intro-d0196d3511c34cd69b8690efb51d84b0) for instructions for setting up and configuring Turso.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Branches
 
-[Course Notes](https://clumsy-humor-894.notion.site/Intermediate-Next-js-0f91d69bdb5046c3920caf325222eb97?pvs=4)
+The `main` branch is a final version of the application. Checkout the `step/0` branch if you are starting the course. There are several other "checkpoint" branches:
+
+- `step/0`: Starting branch for the course
+- `step/1`: Starting code for the Routing & Data Fetching section
+- `step/2`: Starting code for the Per-Request Caching lesson
+- `step/3`: Starting code for the Active & Protected Routes section
+- `step/4`: Starting code for the Advanced Server Actions & Revalidation section
+- `step/5`: Starting code for the Events Page lesson
+- `step/6`: Final code from the course (similar to what is on the main branch)
