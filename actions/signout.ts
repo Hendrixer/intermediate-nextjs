@@ -4,7 +4,8 @@ import { COOKIE_NAME } from '@/utils/constants'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export const signout = () => {
-  cookies().delete(COOKIE_NAME)
+export const signout = async () => {
+  const cookieStore = await cookies()
+  cookieStore.delete(COOKIE_NAME)
   redirect('/signin')
 }

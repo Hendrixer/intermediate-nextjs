@@ -1,13 +1,21 @@
 import { getEventsForDashboard } from '@/utils/events'
 import { getCurrentUser } from '@/utils/users'
-import { Chip } from '@nextui-org/react'
+// import { Chip } from '@nextui-org/react'
 import Link from 'next/link'
 
-const statusColors = {
+const statusColors: {
+  [key: string]:
+    | 'warning'
+    | 'success'
+    | 'primary'
+    | 'default'
+    | 'danger'
+    | 'secondary'
+} = {
   draft: 'warning',
   live: 'success',
   started: 'primary',
-  ended: 'disabled',
+  ended: 'default',
   canceled: 'danger',
 }
 
@@ -29,14 +37,21 @@ const EventsRsvp = async () => {
                 <span>{event.name}</span>
               </Link>
               <span>
-                <Chip size="sm" color={statusColors[event.status]}>
+                {/* <Chip
+                  size="sm"
+                  color={
+                    statusColors[event.status]
+                      ? statusColors[event.status]
+                      : 'primary'
+                  }
+                >
                   {event.status}
-                </Chip>
+                </Chip> */}
               </span>
               <span>
-                <Chip size="sm" variant="faded">
+                {/* <Chip size="sm" variant="faded">
                   {event.name}
-                </Chip>
+                </Chip> */}
               </span>
             </div>
           ))}

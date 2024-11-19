@@ -6,7 +6,7 @@ import { getUserFromToken } from './authTools'
 import { cache } from 'react'
 
 export const getCurrentUser = cache(async () => {
-  const token = cookies().get(COOKIE_NAME)
+  const token = (await cookies()).get(COOKIE_NAME)
   if (!token) redirect('/signin')
 
   const user = await getUserFromToken(token)

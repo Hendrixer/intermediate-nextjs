@@ -2,7 +2,8 @@ import { getOneEvent } from '@/utils/events'
 import { getCurrentUser } from '@/utils/users'
 import { redirect } from 'next/navigation'
 
-const EventPage = async ({ params }) => {
+const EventPage = async props => {
+  const params = await props.params;
   const user = await getCurrentUser()
   const event = await getOneEvent(user.id, params.id)
 

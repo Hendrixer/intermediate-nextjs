@@ -18,7 +18,7 @@ export const registerUser = async (prevState: any, formData: FormData) => {
 
   try {
     const { token } = await signup(data)
-    cookies().set(COOKIE_NAME, token)
+    (await cookies()).set(COOKIE_NAME, token)
   } catch (e) {
     console.error(e)
     return { message: 'Failed to sign you up' }
@@ -34,7 +34,7 @@ export const signinUser = async (prevState: any, formData: FormData) => {
 
   try {
     const { token } = await signin(data)
-    cookies().set(COOKIE_NAME, token)
+    (await cookies()).set(COOKIE_NAME, token)
   } catch (e) {
     console.error(e)
     return { message: 'Failed to sign you in' }
