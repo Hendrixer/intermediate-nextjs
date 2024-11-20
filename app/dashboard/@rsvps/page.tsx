@@ -1,6 +1,6 @@
 import { getRsvpsForDashboard } from '@/utils/rsvps'
 import { getCurrentUser } from '@/utils/users'
-// import { Chip } from '@nextui-org/react'
+import { Chip } from '@nextui-org/chip'
 import Link from 'next/link'
 
 const statusColors: {
@@ -32,7 +32,7 @@ const RsvpsSlot = async () => {
             >
               <span>{attendees.name}</span>
               <span>
-                {/* <Chip
+                <Chip
                   size="sm"
                   color={
                     statusColors[rsvps.status]
@@ -41,13 +41,13 @@ const RsvpsSlot = async () => {
                   }
                 >
                   {rsvps?.status}
-                </Chip> */}
+                </Chip>
               </span>
               <span>
                 <Link href={`/dashboard/events/${events?.id}`}>
-                  {/* <Chip size="sm" variant="faded">
+                  <Chip size="sm" variant="faded">
                     {events?.name}
-                  </Chip> */}
+                  </Chip>
                 </Link>
               </span>
             </div>
