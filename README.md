@@ -1,6 +1,6 @@
 [![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)](https://frontendmasters.com/courses/intermediate-next-js/)
 
-This is a companion repo for the [Intermediate Next.js course](https://frontendmasters.com/courses/intermediate-next-js/) course on [Frontend Masters](https://frontendmasters.com).
+This is a companion repo for the [Intermediate Next.js course](https://frontendmasters.com/courses/intermediate-next-js/) course on [Frontend Masters](https://frontendmasters.com) updated to Next.js 15 and React 19 RC.
 
 ## Requirements & Setup Instructions
 
@@ -15,7 +15,7 @@ Fork/Clone the repository and checkout the `step/0` branch:
 git clone https://github.com/Hendrixer/intermediate-nextjs.git
 cd intermediate-nextjs
 git checkout step/0
-npm install
+npm install --legacy-peer-deps
 ```
 
 ## Turso Setup

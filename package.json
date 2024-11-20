@@ -1,9 +1,9 @@
 {
   "name": "int-nextjs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,18 +13,18 @@
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
-    "@nextui-org/react": "^2.3.6",
+    "@nextui-org/react": "^2.4.8",
     "@scaleway/random-name": "^5.1.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.36.3",
-    "framer-motion": "^11.1.9",
+    "framer-motion": "^11.11.17",
     "jsonwebtoken": "^9.0.2",
-    "lucide-react": "^0.378.0",
-    "next": "14.2.3",
+    "lucide-react": "^0.460.0",
+    "next": "15.0.3",
     "nextjs-better-unstable-cache": "^1.1.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
     "server-only": "^0.0.1",
     "zod": "^3.23.8"
   },
@@ -32,14 +32,18 @@
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "drizzle-kit": "^0.28.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3",
+    "eslint-config-next": "15.0.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.9.3",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

@@ -1,9 +1,17 @@
 import { getRsvpsForDashboard } from '@/utils/rsvps'
 import { getCurrentUser } from '@/utils/users'
-import { Chip } from '@nextui-org/react'
+import { Chip } from '@nextui-org/chip'
 import Link from 'next/link'
 
-const statusColors = {
+const statusColors: {
+  [key: string]:
+    | 'warning'
+    | 'success'
+    | 'primary'
+    | 'default'
+    | 'danger'
+    | 'secondary'
+} = {
   going: 'primary',
   maybe: 'warning',
   'not-going': 'danger',
@@ -19,17 +27,24 @@ const RsvpsSlot = async () => {
         <div className="rounded-md border border-default-100 my-8">
           {data.map(({ rsvps, events, attendees }) => (
             <div
-              key={rsvps.id}
+              key={rsvps?.id}
               className="border-b border-default-100 p-2 flex gap-2"
             >
               <span>{attendees.name}</span>
               <span>
-                <Chip size="sm" color={statusColors[rsvps?.status]}>
+                <Chip
+                  size="sm"
+                  color={
+                    statusColors[rsvps.status]
+                      ? statusColors[rsvps.status]
+                      : 'primary'
+                  }
+                >
                   {rsvps?.status}
                 </Chip>
               </span>
               <span>
-                <Link href={`/dashboard/events/${events.id}`}>
+                <Link href={`/dashboard/events/${events?.id}`}>
                   <Chip size="sm" variant="faded">
                     {events?.name}
                   </Chip>
