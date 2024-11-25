@@ -33,3 +33,7 @@ The `main` branch is a final version of the application. Checkout the `step/0` b
 - `step/4`: Starting code for the Advanced Server Actions & Revalidation section
 - `step/5`: Starting code for the Events Page lesson
 - `step/6`: Final code from the course (similar to what is on the main branch)
+
+## Additional Resources
+
+If you are interested in seeing a completed version of of this Repo built with Next.js 15 and React 19, check out [this repo](https://github.com/frankstallone/intermediate-nextjs). Note that the dependencies in that repo may not work with the steps in this course.
